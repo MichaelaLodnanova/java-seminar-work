@@ -8,33 +8,42 @@ public class Vertex2D {
     private double y = 0.0;
 
     public double getX() {
-        return x; // getter for x
+        return x;
     }
 
     public double getY() {
-        return y; // getter for y
+        return y;
     }
 
     public void setX(double x) {
-        this.x = x; // setter for x
+        this.x = x;
     }
 
     public void setY(double y) {
-        this.y = y; // setter for y
+        this.y = y;
     }
 
+    /**
+     * method for returning coordinates
+      * @return formatted coordinates
+     */
     public String getInfo() {
-        // returns formatted coordinate description
         return "[" + x + ", " + y + "]";
     }
 
+    /**
+     * method for sum of coordinates
+     * @return sum of x and y
+     */
     public double sumCoordinates() {
-        // returning sum
         return x + y;
     }
 
+    /**
+     * adding vertex, moving coordinates
+     * @param vertex
+     */
     public void move(Vertex2D vertex) {
-        // method for shifting the vertex
         x += vertex.x;
         y += vertex.y;
     }
