@@ -1,5 +1,6 @@
 package cz.muni.fi.pb162.project.geometry;
 
+import cz.muni.fi.pb162.project.Triangle;
 import org.junit.Before;
 import org.junit.Test;
 

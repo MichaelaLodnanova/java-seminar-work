@@ -4,9 +4,13 @@ package cz.muni.fi.pb162.project.geometry;
  * @author Michaela Lodnanova
  */
 public class Vertex2D {
-    private double x = 0.0;
-    private double y = 0.0;
+    private double x;
+    private double y;
 
+    public Vertex2D(double xX, double yY) {
+        x = xX;
+        y = yY;
+    }
     public double getX() {
         return x;
     }
@@ -27,24 +31,14 @@ public class Vertex2D {
      * method for returning coordinates
       * @return formatted coordinates
      */
-    public String getInfo() {
+    @Override
+    public String toString() {
         return "[" + x + ", " + y + "]";
     }
 
-    /**
-     * method for sum of coordinates
-     * @return sum of x and y
-     */
-    public double sumCoordinates() {
-        return x + y;
-    }
-
-    /**
-     * adding vertex, moving coordinates
-     * @param vertex
-     */
-    public void move(Vertex2D vertex) {
-        x += vertex.x;
-        y += vertex.y;
+    public Vertex2D createMiddle(Vertex2D vertex) {
+        double newX = (vertex.getX()+this.x)/2;
+        double newY = (vertex.getY()+this.y)/2;
+        return new Vertex2D(newX, newY);
     }
 }
