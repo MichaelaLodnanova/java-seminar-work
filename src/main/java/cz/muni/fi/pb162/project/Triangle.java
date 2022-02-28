@@ -3,11 +3,13 @@ package cz.muni.fi.pb162.project;
 import cz.muni.fi.pb162.project.geometry.Vertex2D;
 
 /**
+ * Class Triangle represents triangle with its vertices, it is
+ * represented by an array of three vertices in constructor
  * @author Michaela Lodnanova
  */
 public class Triangle {
-    private Vertex2D[] verticesArray = new Vertex2D[3];
-    private Triangle[] trianglesArray = new Triangle[3];
+    private final Vertex2D[] verticesArray = new Vertex2D[3];
+    private final Triangle[] trianglesArray = new Triangle[3];
     public Triangle(Vertex2D a, Vertex2D b, Vertex2D c) {
         verticesArray[0] = a;
         verticesArray[1] = b;
