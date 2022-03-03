@@ -9,9 +9,14 @@ public class Vertex2D {
     private double x;
     private double y;
 
-    public Vertex2D(double xX, double yY) {
-        x = xX;
-        y = yY;
+    /**
+     * Constructor makes 2D Vertex with x and y - intercepts
+     * @param xPoint is intercept on the x-axis
+     * @param yPoint is intercept on the y-axis
+     */
+    public Vertex2D(double xPoint, double yPoint) {
+        x = xPoint;
+        y = yPoint;
     }
     public double getX() {
         return x;
