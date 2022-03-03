@@ -15,14 +15,28 @@ public class Triangle {
         verticesArray[1] = b;
         verticesArray[2] = c;
     }
+
+    /**
+     * (due to pipeline) this method is supposed to get a vertex on a given index
+     * @param index of vertex given
+     * @return vertex on the given index
+     */
     public Vertex2D getVertex(int index) {
-        if (index < 0 || index > 2)
+        if (index < 0 || index > 2) {
             return null;
+        }
         return verticesArray[index];
     }
+
+    /**
+     * this method sets the vertex of a triangle with a given vertex
+     * @param index is index of the place in the array (verticesArray)
+     * @param vertex is the vertex that should be set
+     */
     public void setVertex(int index, Vertex2D vertex) {
-        if (index < 0 || index > 2)
+        if (index < 0 || index > 2) {
             return;
+        }
         verticesArray[index] = vertex;
     }
     @Override
@@ -39,8 +53,9 @@ public class Triangle {
      * otherwise returns false
      */
     public boolean divide() {
-        if (trianglesArray[2] != null)
+        if (trianglesArray[2] != null) {
             return false;
+        }
         for (int i = 0; i < 3; i++) {
             Vertex2D vertex1 = new Vertex2D(verticesArray[i].getX(), verticesArray[i].getY());
             Vertex2D vertex2 = new Vertex2D(verticesArray[i].createMiddle(verticesArray[(i + 1) % 3]).getX(),
@@ -60,8 +75,9 @@ public class Triangle {
      */
     public boolean isDivided() {
         for (int i = 0; i < 3; i++) {
-            if (trianglesArray[i] == null)
+            if (trianglesArray[i] == null) {
                 return false;
+            }
         }
         return true;
     }
@@ -73,8 +89,9 @@ public class Triangle {
      * @return null if index is out of range otherwise return object triangle
      */
     public Triangle getSubTriangle(int index) {
-        if (index < 0 || index > 2)
+        if (index < 0 || index > 2) {
             return null;
+        }
         return trianglesArray[index];
     }
 
