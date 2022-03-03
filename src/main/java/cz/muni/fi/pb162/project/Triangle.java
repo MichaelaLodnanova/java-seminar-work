@@ -10,6 +10,13 @@ import cz.muni.fi.pb162.project.geometry.Vertex2D;
 public class Triangle {
     private final Vertex2D[] verticesArray = new Vertex2D[3];
     private final Triangle[] trianglesArray = new Triangle[3];
+
+    /**
+     * Construcotr makes a triangle of 3 vertices a, b, c
+     * @param a is first vertex of a triangle
+     * @param b is second vertex of a triangle
+     * @param c is third vertex of a triangle
+     */
     public Triangle(Vertex2D a, Vertex2D b, Vertex2D c) {
         verticesArray[0] = a;
         verticesArray[1] = b;
