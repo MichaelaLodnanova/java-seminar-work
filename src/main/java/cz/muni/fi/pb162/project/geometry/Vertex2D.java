@@ -46,8 +46,8 @@ public class Vertex2D {
      * @return an object Vertex2D that represents the middle between two points
      */
     public Vertex2D createMiddle(Vertex2D vertex) {
-        double newX = (vertex.getX()+this.x)/2;
-        double newY = (vertex.getY()+this.y)/2;
+        double newX = (vertex.getX()+x)/2;
+        double newY = (vertex.getY()+y)/2;
         return new Vertex2D(newX, newY);
     }
 }

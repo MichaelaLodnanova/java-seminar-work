@@ -12,24 +12,27 @@ public class Triangle {
     private final Triangle[] trianglesArray = new Triangle[3];
 
     /**
-     * Construcotr makes a triangle of 3 vertices a, b, c
-     * @param a is first vertex of a triangle
-     * @param b is second vertex of a triangle
-     * @param c is third vertex of a triangle
+     * Creates Triangle instance made of three Vertex2D objects
+     * @param v1 is first vertex representing triangle
+     * @param v2 is second vertex representing triangle
+     * @param v3 is third vertex representing triangle
      */
-    public Triangle(Vertex2D a, Vertex2D b, Vertex2D c) {
-        verticesArray[0] = a;
-        verticesArray[1] = b;
-        verticesArray[2] = c;
+    public Triangle(Vertex2D v1, Vertex2D v2, Vertex2D v3) {
+        verticesArray[0] = v1;
+        verticesArray[1] = v2;
+        verticesArray[2] = v3;
     }
 
+    private boolean indexOutOfRange(int index) {
+        return (index < 0 || index > 2);
+    }
     /**
      * (due to pipeline) this method is supposed to get a vertex on a given index
      * @param index of vertex given
      * @return vertex on the given index
      */
     public Vertex2D getVertex(int index) {
-        if (index < 0 || index > 2) {
+        if (indexOutOfRange(index)){
             return null;
         }
         return verticesArray[index];
@@ -41,7 +44,7 @@ public class Triangle {
      * @param vertex is the vertex that should be set
      */
     public void setVertex(int index, Vertex2D vertex) {
-        if (index < 0 || index > 2) {
+        if (indexOutOfRange(index)) {
             return;
         }
         verticesArray[index] = vertex;
@@ -54,7 +57,7 @@ public class Triangle {
     }
 
     /**
-     * this function devides a triangle into three smaller ones
+     * this function divides a triangle into three smaller ones
      * it stores the vertices of smaller triangles in an array
      * @return true if smaller triangles are stored in the array
      * otherwise returns false
@@ -81,12 +84,7 @@ public class Triangle {
      * true if the triangle is divided into three smaller ones (array is full)
      */
     public boolean isDivided() {
-        for (int i = 0; i < 3; i++) {
-            if (trianglesArray[i] == null) {
-                return false;
-            }
-        }
-        return true;
+        return (trianglesArray[2] != null);
     }
 
     /**
@@ -96,7 +94,7 @@ public class Triangle {
      * @return null if index is out of range otherwise return object triangle
      */
     public Triangle getSubTriangle(int index) {
-        if (index < 0 || index > 2) {
+        if (indexOutOfRange(index)) {
             return null;
         }
         return trianglesArray[index];
