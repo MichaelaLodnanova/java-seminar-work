@@ -112,10 +112,10 @@ public class Triangle {
         double dist2 = verticesArray[1].distance(verticesArray[2]);
         double dist3 = verticesArray[2].distance(verticesArray[0]);
 
-        double MINIMAL_TOLERANCE = 0.001;
-        return Math.abs(dist1-dist2) < MINIMAL_TOLERANCE
-                && Math.abs(dist2 - dist3) < MINIMAL_TOLERANCE
-                && Math.abs(dist3 - dist1) < MINIMAL_TOLERANCE;
+        double minimalTolerance = 0.001;
+        return Math.abs(dist1-dist2) < minimalTolerance
+                && Math.abs(dist2 - dist3) < minimalTolerance
+                && Math.abs(dist3 - dist1) < minimalTolerance;
 
     }
 

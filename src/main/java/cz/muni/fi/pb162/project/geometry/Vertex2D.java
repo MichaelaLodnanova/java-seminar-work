@@ -6,8 +6,8 @@ package cz.muni.fi.pb162.project.geometry;
  * @author Michaela Lodnanova
  */
 public final class Vertex2D {
-    public final double x;
-    public final double y;
+    private final double x;
+    private final double y;
 
     /**
      * Constructor makes 2D Vertex with x and y - intercepts
