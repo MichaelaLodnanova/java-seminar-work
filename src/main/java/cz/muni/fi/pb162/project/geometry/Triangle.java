@@ -134,7 +134,4 @@ public class Triangle {
             trianglesArray[i].divide(depth - 1);
         }
     }
-
-
-
 }
