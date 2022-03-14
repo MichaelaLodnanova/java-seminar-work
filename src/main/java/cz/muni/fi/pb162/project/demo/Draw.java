@@ -1,6 +1,6 @@
 package cz.muni.fi.pb162.project.demo;
 
-import cz.muni.fi.pb162.project.Triangle;
+import cz.muni.fi.pb162.project.geometry.Triangle;
 import cz.muni.fi.pb162.project.geometry.Circle;
 import cz.muni.fi.pb162.project.geometry.Vertex2D;
 

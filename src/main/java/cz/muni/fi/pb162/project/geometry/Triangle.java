@@ -1,6 +1,4 @@
-package cz.muni.fi.pb162.project;
-
-import cz.muni.fi.pb162.project.geometry.Vertex2D;
+package cz.muni.fi.pb162.project.geometry;
 
 /**
  * Class Triangle represents triangle with its vertices, it is
@@ -10,6 +8,7 @@ import cz.muni.fi.pb162.project.geometry.Vertex2D;
 public class Triangle {
     private final Vertex2D[] verticesArray = new Vertex2D[3];
     private final Triangle[] trianglesArray = new Triangle[3];
+    private static final double TOLERANCE = 0.001;
 
     /**
      * Creates Triangle instance made of three Vertex2D objects
@@ -112,10 +111,9 @@ public class Triangle {
         double dist2 = verticesArray[1].distance(verticesArray[2]);
         double dist3 = verticesArray[2].distance(verticesArray[0]);
 
-        double minimalTolerance = 0.001;
-        return Math.abs(dist1-dist2) < minimalTolerance
-                && Math.abs(dist2 - dist3) < minimalTolerance
-                && Math.abs(dist3 - dist1) < minimalTolerance;
+        return Math.abs(dist1-dist2) < TOLERANCE
+                && Math.abs(dist2 - dist3) < TOLERANCE
+                && Math.abs(dist3 - dist1) < TOLERANCE;
 
     }
 
