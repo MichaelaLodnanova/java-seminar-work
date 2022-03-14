@@ -1,6 +1,4 @@
-package cz.muni.fi.pb162.project;
-
-import cz.muni.fi.pb162.project.geometry.Vertex2D;
+package cz.muni.fi.pb162.project.geometry;
 
 /**
  * Class Triangle represents triangle with its vertices, it is
@@ -10,6 +8,7 @@ import cz.muni.fi.pb162.project.geometry.Vertex2D;
 public class Triangle {
     private final Vertex2D[] verticesArray = new Vertex2D[3];
     private final Triangle[] trianglesArray = new Triangle[3];
+    private static final double TOLERANCE = 0.001;
 
     /**
      * Creates Triangle instance made of three Vertex2D objects
@@ -21,6 +20,18 @@ public class Triangle {
         verticesArray[0] = v1;
         verticesArray[1] = v2;
         verticesArray[2] = v3;
+    }
+
+    /**
+     * Calls the previous constructor and then splits the triangle
+     * @param v1 is first vertex representing triangle
+     * @param v2 is second vertex representing triangle
+     * @param v3 is third vertex representing triangle
+     * @param depth represents the division depth
+     */
+    public Triangle(Vertex2D v1, Vertex2D v2, Vertex2D v3, int depth) {
+        this(v1, v2, v3);
+        divide(depth);
     }
 
     private boolean indexOutOfRange(int index) {
@@ -38,17 +49,6 @@ public class Triangle {
         return verticesArray[index];
     }
 
-    /**
-     * this method sets the vertex of a triangle with a given vertex
-     * @param index is index of the place in the array (verticesArray)
-     * @param vertex is the vertex that should be set
-     */
-    public void setVertex(int index, Vertex2D vertex) {
-        if (indexOutOfRange(index)) {
-            return;
-        }
-        verticesArray[index] = vertex;
-    }
     @Override
     public String toString() {
         return "Triangle: vertices=" + verticesArray[0] +
@@ -100,4 +100,38 @@ public class Triangle {
         return trianglesArray[index];
     }
 
+    /**
+     * method that uses distance() method from the class Vertex2D
+     * to specify distances between all vertices of the Triangle with
+     * minimal tolerance 0.001
+     * @return true when the Triangle is equilateral
+     */
+    public boolean isEquilateral() {
+        double dist1 = verticesArray[0].distance(verticesArray[1]);
+        double dist2 = verticesArray[1].distance(verticesArray[2]);
+        double dist3 = verticesArray[2].distance(verticesArray[0]);
+
+        return Math.abs(dist1-dist2) < TOLERANCE
+                && Math.abs(dist2 - dist3) < TOLERANCE
+                && Math.abs(dist3 - dist1) < TOLERANCE;
+
+    }
+
+    /**
+     * This method uses divide() method below to divide triangle
+     * into smaller ones. Then they will be divided again depending
+     * on the depth parameter.
+     * @param depth specifies depth of the division
+     */
+    public void divide(int depth) {
+        if (depth <= 0) {
+            return;
+        }
+
+        divide();
+
+        for(int i = 0; i < 3; i++){
+            trianglesArray[i].divide(depth - 1);
+        }
+    }
 }

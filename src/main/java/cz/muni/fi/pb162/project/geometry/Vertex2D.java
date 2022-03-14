@@ -5,9 +5,9 @@ package cz.muni.fi.pb162.project.geometry;
  * It is represented by x and y intercepts.
  * @author Michaela Lodnanova
  */
-public class Vertex2D {
-    private double x;
-    private double y;
+public final class Vertex2D {
+    private final double x;
+    private final double y;
 
     /**
      * Constructor makes 2D Vertex with x and y - intercepts
@@ -26,14 +26,6 @@ public class Vertex2D {
         return y;
     }
 
-    public void setX(double x) {
-        this.x = x;
-    }
-
-    public void setY(double y) {
-        this.y = y;
-    }
-
     @Override
     public String toString() {
         return "[" + x + ", " + y + "]";
@@ -49,5 +41,17 @@ public class Vertex2D {
         double newX = (vertex.getX()+x)/2;
         double newY = (vertex.getY()+y)/2;
         return new Vertex2D(newX, newY);
+    }
+
+    /**
+     * Method which calculates the Euclidean distance between two vertices
+     * @param vertex is another 2D point
+     * @return double type distance
+     */
+    public double distance(Vertex2D vertex) {
+        if (vertex == null){
+            return -1.0;
+        }
+        return Math.sqrt(Math.pow(vertex.getX()-x, 2.0) + Math.pow(vertex.getY()-y, 2.0));
     }
 }
