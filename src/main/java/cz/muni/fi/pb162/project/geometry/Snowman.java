@@ -23,9 +23,7 @@ public class Snowman implements Circular{
         circulars[0] = circularObject;
         if (factor > 0 && factor <= 1) {
             this.factor = factor;
-        }
-        else
-        {
+        } else {
             this.factor = CONSTANT_FACTOR;
         }
 
