@@ -1,7 +1,5 @@
 package cz.muni.fi.pb162.project.geometry;
 
-import java.util.Arrays;
-import java.util.Collections;
 
 /**
  * Class Snowman represents an object made of four circular
@@ -10,8 +8,8 @@ import java.util.Collections;
  */
 public class Snowman implements Circular{
     private static final int CONSTANT_LENGTH = 4;
-    public Circular[] circulars = new Circular[CONSTANT_LENGTH];
-    public double factor;
+    private Circular[] circulars = new Circular[CONSTANT_LENGTH];
+    private double factor;
     private static final double CONSTANT_FACTOR = 0.8;
 
     /**
@@ -26,7 +24,8 @@ public class Snowman implements Circular{
         if (factor > 0 && factor <= 1) {
             this.factor = factor;
         }
-        else {
+        else
+        {
             this.factor = CONSTANT_FACTOR;
         }
 

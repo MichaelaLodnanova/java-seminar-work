@@ -40,6 +40,13 @@ public class Square implements Circular {
         return this.diameter/2.0;
     }
 
+    /**
+     * Method that calculates vertices of the square using center
+     * vertex and diameter of an object
+     * @param index represents the number of a vertex method should
+     *              return
+     * @return Vertex2D type object representing vertex of the square
+     */
     public Vertex2D getVertex(int index) {
 
         switch (index) {
