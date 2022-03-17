@@ -1,6 +1,7 @@
 package cz.muni.fi.pb162.project.demo;
 
 
+import cz.muni.fi.pb162.project.geometry.Square;
 import cz.muni.fi.pb162.project.geometry.Triangle;
 import cz.muni.fi.pb162.project.geometry.Vertex2D;
 
@@ -22,8 +23,8 @@ public class Demo {
         Vertex2D v2 = new Vertex2D(0, 100);
         Vertex2D v3 = new Vertex2D(100, -100);
 
-        Triangle t = new Triangle(v1,v2, v3);
+        Square s = new Square(new Vertex2D(0, 0), 100);
 
-        System.out.println(t);
+        System.out.println(s);
     }
 }
