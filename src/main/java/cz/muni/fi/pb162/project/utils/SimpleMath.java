@@ -20,7 +20,7 @@ public class SimpleMath {
     public static double minX(Triangle triangle) {
         Vertex2D min = triangle.getVertex(0);
         for (int i = 1; i <= 2; i++) {
-            if (triangle.getVertex(i).getY() < min.getY()) {
+            if (triangle.getVertex(i).getX() < min.getX()) {
                 min = triangle.getVertex(i);
             }
         }
@@ -50,7 +50,7 @@ public class SimpleMath {
     public static double maxX(Triangle triangle) {
         Vertex2D max = triangle.getVertex(0);
         for (int i = 1; i <= 2; i++) {
-            if (triangle.getVertex(i).getY() > max.getY()) {
+            if (triangle.getVertex(i).getX() > max.getX()) {
                 max = triangle.getVertex(i);
             }
         }
@@ -70,28 +70,5 @@ public class SimpleMath {
             }
         }
         return maxY;
-    }
-
-    /**
-     * method that returns calculated width of a triangle -
-     * input parameter
-     * @param triangle is an object with three vertices
-     * @return calculated width of a triangle
-     */
-    public static double getWidth(Triangle triangle){
-        double max = triangle.getVertex(0).getX();
-        double min = triangle.getVertex(0).getX();
-
-        for(int i = 0; i <= 2; i++){
-            if (max < triangle.getVertex(i).getX()){
-                max = triangle.getVertex(i).getX();
-            }
-
-            if (min > triangle.getVertex(i).getX()){
-                min = triangle.getVertex(i).getX();
-            }
-        }
-
-        return max - min;
     }
 }

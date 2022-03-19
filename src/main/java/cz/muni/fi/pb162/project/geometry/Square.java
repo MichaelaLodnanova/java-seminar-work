@@ -7,7 +7,7 @@ package cz.muni.fi.pb162.project.geometry;
  */
 public class Square implements Circular {
     private Vertex2D center;
-    private double diameter;
+    private double radius;
 
     /**
      * constructor creates a square type object with its
@@ -18,7 +18,7 @@ public class Square implements Circular {
      */
     public Square(Vertex2D center, double diameter) {
         this.center = center;
-        this.diameter = diameter;
+        this.radius = diameter / 2.0;
     }
 
     /**
@@ -27,7 +27,7 @@ public class Square implements Circular {
      * @param circleObject is on object of type Circular.
      */
     public Square(Circular circleObject) {
-        this(circleObject.getCenter(), circleObject.getRadius() * 2);
+        this(circleObject.getCenter(), circleObject.getRadius() * 2.0);
     }
 
     @Override
@@ -37,7 +37,7 @@ public class Square implements Circular {
 
     @Override
     public double getRadius() {
-        return this.diameter/2.0;
+        return this.radius;
     }
 
     /**
@@ -51,17 +51,17 @@ public class Square implements Circular {
 
         switch (index) {
             case 0:
-                return new Vertex2D(center.getX() - diameter/2.0,
+                return new Vertex2D(center.getX() - radius,
                         center.getY());
             case 1:
                 return new Vertex2D(center.getX(),
-                        center.getY()-diameter/2.0);
+                        center.getY()- radius);
             case 2:
-                return new Vertex2D(center.getX() + diameter/2.0,
+                return new Vertex2D(center.getX() + radius,
                         center.getY());
             case 3:
                 return new Vertex2D(center.getX(),
-                        center.getY() + diameter/2.0);
+                        center.getY() + radius);
             default:
                 return null;
         }

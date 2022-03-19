@@ -53,7 +53,7 @@ public class Triangle implements Measurable{
 
     @Override
     public double getWidth() {
-        return SimpleMath.getWidth(this);
+        return SimpleMath.maxX(this) - SimpleMath.minX(this);
     }
 
     @Override
