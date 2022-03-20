@@ -7,8 +7,8 @@ package cz.muni.fi.pb162.project.geometry;
  * @author Michaela Lodnanova
  */
 public class Snowman implements Circular{
-    private static final int CONSTANT_LENGTH = 4;
-    public Circular[] circulars = new Circular[CONSTANT_LENGTH];
+    public static final int CONSTANT_LENGTH = 4;
+    private Circular[] circulars = new Circular[CONSTANT_LENGTH];
     private double factor;
     private static final double CONSTANT_FACTOR = 0.8;
 
