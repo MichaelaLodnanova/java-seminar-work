@@ -1,11 +1,13 @@
 package cz.muni.fi.pb162.project.geometry;
 
+import cz.muni.fi.pb162.project.utils.SimpleMath;
+
 /**
  * Class Triangle represents triangle with its vertices, it is
  * represented by an array of three vertices in constructor
  * @author Michaela Lodnanova
  */
-public class Triangle {
+public class Triangle implements Measurable{
     private final Vertex2D[] verticesArray = new Vertex2D[3];
     private final Triangle[] trianglesArray = new Triangle[3];
     private static final double TOLERANCE = 0.001;
@@ -50,11 +52,22 @@ public class Triangle {
     }
 
     @Override
+    public double getWidth() {
+        return SimpleMath.maxX(this) - SimpleMath.minX(this);
+    }
+
+    @Override
+    public double getHeight() {
+        return SimpleMath.maxY(this) - SimpleMath.minY(this);
+    }
+
+    @Override
     public String toString() {
         return "Triangle: vertices=" + verticesArray[0] +
                 " " + verticesArray[1] +
                 " " + verticesArray[2];
     }
+
 
     /**
      * this function divides a triangle into three smaller ones
