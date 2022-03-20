@@ -9,8 +9,8 @@ package cz.muni.fi.pb162.project.geometry;
 public class Snowman implements Circular{
     private static final int CONSTANT_LENGTH = 4;
     private Circular[] circulars = new Circular[CONSTANT_LENGTH];
-    private double factor;
-    public static final double CONSTANT_FACTOR = 0.8;
+    public double factor;
+    private static final double CONSTANT_FACTOR = 0.8;
 
     /**
      * Constructor creates first circular object which represents
