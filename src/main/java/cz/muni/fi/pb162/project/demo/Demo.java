@@ -1,7 +1,7 @@
 package cz.muni.fi.pb162.project.demo;
 
 
-import cz.muni.fi.pb162.project.geometry.Square;
+import cz.muni.fi.pb162.project.geometry.RegularOctagon;
 import cz.muni.fi.pb162.project.geometry.Vertex2D;
 
 /**
@@ -18,12 +18,11 @@ public class Demo {
      */
     public static void main(String[] args) {
 
-        Vertex2D v1 = new Vertex2D(-100, 0);
-        Vertex2D v2 = new Vertex2D(0, 100);
-        Vertex2D v3 = new Vertex2D(100, -100);
+        Vertex2D center = new Vertex2D(0,0);
+        double radius = 1;
 
-        Square s = new Square(new Vertex2D(0, 0), 100);
+        RegularOctagon octagon = new RegularOctagon(center, radius);
 
-        System.out.println(s);
+        System.out.println(octagon);
     }
 }

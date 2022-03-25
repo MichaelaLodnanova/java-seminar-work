@@ -6,9 +6,7 @@ package cz.muni.fi.pb162.project.geometry;
  * center of type Vertex2D and radius of type double
  * @author Michaela Lodnanova
  */
-public class Circle implements Measurable, Circular{
-    private final Vertex2D center;
-    private final double radius;
+public class Circle extends GeneralRegularPolygon implements Measurable, Circular{
 
     /**
      * Constructor created the Circle object with its center
@@ -17,9 +15,10 @@ public class Circle implements Measurable, Circular{
      * @param radius represents the length of the radius of the object.
      */
     public Circle(Vertex2D center, double radius) {
-        this.center = center;
-        this.radius = radius;
+        super(center, Integer.MAX_VALUE, radius);
+        color = Color.RED;
     }
+
 
     /**
      * Constructor creates a unit circle with the center at the beginning
@@ -29,25 +28,15 @@ public class Circle implements Measurable, Circular{
     public Circle() {
         this(new Vertex2D(0.0, 0.0), 1.0);
     }
-    @Override
-    public double getWidth() {
-        return radius * 2;
-    }
-    @Override
-    public double getHeight() {
-        return radius * 2;
-    }
-    @Override
-    public double getRadius() {
-        return radius;
-    }
-    @Override
-    public Vertex2D getCenter() {
-        return center;
-    }
+
+
     @Override
     public String toString() {
         return "Circle: center=" + center +
                 ", radius=" + radius;
+    }
+    @Override
+    public double getEdgeLength() {
+        return 0;
     }
 }
