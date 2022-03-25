@@ -7,10 +7,10 @@ package cz.muni.fi.pb162.project.geometry;
  * @author Michaela Lodnanova
  */
 public class GeneralRegularPolygon implements RegularPolygon, Colored{
-    public Vertex2D center;
-    public int edges;
-    public double radius;
-    public Color color = Color.BLACK;
+    Vertex2D center;
+    int edges;
+    double radius;
+    Color color = Color.BLACK;
 
     /**
      * Constructor creates an object of type GeneralRegularPolygon. As its
