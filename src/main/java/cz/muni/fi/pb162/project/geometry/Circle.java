@@ -16,7 +16,7 @@ public class Circle extends GeneralRegularPolygon implements Measurable, Circula
      */
     public Circle(Vertex2D center, double radius) {
         super(center, Integer.MAX_VALUE, radius);
-        color = Color.RED;
+        setColor(Color.RED);
     }
 
 
@@ -32,8 +32,8 @@ public class Circle extends GeneralRegularPolygon implements Measurable, Circula
 
     @Override
     public String toString() {
-        return "Circle: center=" + center +
-                ", radius=" + radius;
+        return "Circle: center=" + getCenter() +
+                ", radius=" + getRadius();
     }
     @Override
     public double getEdgeLength() {
