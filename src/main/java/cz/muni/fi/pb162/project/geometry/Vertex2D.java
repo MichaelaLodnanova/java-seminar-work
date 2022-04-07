@@ -36,8 +36,12 @@ public final class Vertex2D {
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (this == o){
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()){
+            return false;
+        }
         Vertex2D vertex2D = (Vertex2D) o;
         return Double.compare(vertex2D.getX(), getX()) == 0 && Double.compare(vertex2D.getY(), getY()) == 0;
     }

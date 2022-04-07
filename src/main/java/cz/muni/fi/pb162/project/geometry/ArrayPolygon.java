@@ -19,7 +19,9 @@ public class ArrayPolygon extends SimplePolygon {
      * @param verticesArray represents array of vertices
      */
     public ArrayPolygon(Vertex2D[] verticesArray){
-        if (verticesArray == null || verticesArray.length < 3 || Arrays.stream(verticesArray).anyMatch(Objects::isNull)){
+        if (verticesArray == null ||
+                verticesArray.length < 3 ||
+                Arrays.stream(verticesArray).anyMatch(Objects::isNull)){
             throw new IllegalArgumentException("Input array is invalid");
         }
 
@@ -28,8 +30,12 @@ public class ArrayPolygon extends SimplePolygon {
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
         ArrayPolygon that = (ArrayPolygon) o;
         return Arrays.equals(verticesArray, that.verticesArray);
     }
