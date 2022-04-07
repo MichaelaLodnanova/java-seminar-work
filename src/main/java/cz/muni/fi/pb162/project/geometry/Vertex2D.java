@@ -1,5 +1,7 @@
 package cz.muni.fi.pb162.project.geometry;
 
+import java.util.Objects;
+
 /**
  * Class represents a vertex - the position of a point in 2D space.
  * It is represented by x and y intercepts.
@@ -18,6 +20,7 @@ public final class Vertex2D {
         x = xPoint;
         y = yPoint;
     }
+
     public double getX() {
         return x;
     }
@@ -29,6 +32,19 @@ public final class Vertex2D {
     @Override
     public String toString() {
         return "[" + x + ", " + y + "]";
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Vertex2D vertex2D = (Vertex2D) o;
+        return Double.compare(vertex2D.getX(), getX()) == 0 && Double.compare(vertex2D.getY(), getY()) == 0;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getX(), getY());
     }
 
     /**
