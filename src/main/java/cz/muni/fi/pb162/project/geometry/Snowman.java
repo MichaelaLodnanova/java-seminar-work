@@ -5,7 +5,7 @@ package cz.muni.fi.pb162.project.geometry;
  * polygon objects.
  * @author Michaela Lodnanova
  */
-public class Snowman implements RegularPolygon, Circular{
+public class Snowman{
     public static final int CONSTANT_LENGTH = 3;
     private RegularPolygon[] polygons = new RegularPolygon[CONSTANT_LENGTH];
     private double factor;
@@ -49,40 +49,5 @@ public class Snowman implements RegularPolygon, Circular{
      */
     public RegularPolygon[] getBalls(){
         return polygons;
-    }
-
-    @Override
-    public Vertex2D getCenter() {
-        return null;
-    }
-
-    @Override
-    public double getRadius() {
-        return 0;
-    }
-
-    @Override
-    public double getWidth() {
-        return 0;
-    }
-
-    @Override
-    public double getHeight() {
-        return 0;
-    }
-
-    @Override
-    public int getNumEdges() {
-        return 0;
-    }
-
-    @Override
-    public double getEdgeLength() {
-        return 0;
-    }
-
-    @Override
-    public Vertex2D getVertex(int index) {
-        return null;
     }
 }

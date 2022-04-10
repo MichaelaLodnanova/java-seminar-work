@@ -1,27 +1,27 @@
 package cz.muni.fi.pb162.project.utils;
 
-import cz.muni.fi.pb162.project.geometry.Triangle;
+import cz.muni.fi.pb162.project.geometry.Polygon;
 import cz.muni.fi.pb162.project.geometry.Vertex2D;
 
 /**
  * SimpleMath class represent static methods that are supposed
  * to help other classes to calculate and return values of
- * minimum/maximum X/Y coordinates and also calculates the width
- * of a triangle
+ * minimum/maximum X/Y coordinates of n-gon.
  * @author Michaela Lodnanova
  */
 public class SimpleMath {
 
     /**
      * method for finding minimum x coordinate
-     * @param triangle is an object with three vertices
-     * @return triangle's minimum x coordinate
+     * @param polygon is an object with n vertices
+     * @return polygon's minimum x coordinate
      */
-    public static double minX(Triangle triangle) {
-        Vertex2D min = triangle.getVertex(0);
-        for (int i = 1; i <= 2; i++) {
-            if (triangle.getVertex(i).getX() < min.getX()) {
-                min = triangle.getVertex(i);
+    public static double minX(Polygon polygon) {
+        Vertex2D min = polygon.getVertex(0);
+        int verticesNumber = polygon.getNumVertices();
+        for (int i = 1; i < verticesNumber; i++) {
+            if (polygon.getVertex(i).getX() < min.getX()) {
+                min = polygon.getVertex(i);
             }
         }
         return min.getX();
@@ -29,14 +29,15 @@ public class SimpleMath {
 
     /**
      * method for finding minimum y coordinate
-     * @param triangle is an object with three vertices
-     * @return triangle's minimum y coordinate
+     * @param polygon is an object with n vertices
+     * @return polygon's minimum y coordinate
      */
-    public static double minY(Triangle triangle) {
-        double minY = triangle.getVertex(0).getY();
-        for (int i = 1; i <= 2; i++) {
-            if (triangle.getVertex(i).getY() < minY) {
-                minY = triangle.getVertex(i).getY();
+    public static double minY(Polygon polygon) {
+        double minY = polygon.getVertex(0).getY();
+        int verticesNumber = polygon.getNumVertices();
+        for (int i = 1; i < verticesNumber; i++) {
+            if (polygon.getVertex(i).getY() < minY) {
+                minY = polygon.getVertex(i).getY();
             }
         }
         return minY;
@@ -44,14 +45,15 @@ public class SimpleMath {
 
     /**
      * method for finding maximum x coordinate
-     * @param triangle is an object with three vertices
-     * @return triangle's maximum x coordinate
+     * @param polygon is an object with n vertices
+     * @return polygon's maximum x coordinate
      */
-    public static double maxX(Triangle triangle) {
-        Vertex2D max = triangle.getVertex(0);
-        for (int i = 1; i <= 2; i++) {
-            if (triangle.getVertex(i).getX() > max.getX()) {
-                max = triangle.getVertex(i);
+    public static double maxX(Polygon polygon) {
+        Vertex2D max = polygon.getVertex(0);
+        int verticesNumber = polygon.getNumVertices();
+        for (int i = 1; i < verticesNumber; i++) {
+            if (polygon.getVertex(i).getX() > max.getX()) {
+                max = polygon.getVertex(i);
             }
         }
         return max.getX();
@@ -59,14 +61,15 @@ public class SimpleMath {
 
     /**
      * method for finding maximum y coordinate
-     * @param triangle is an object with three vertices
-     * @return triangle's maximum y coordinate
+     * @param polygon is an object with n-vertices
+     * @return polygons's maximum y coordinate
      */
-    public static double maxY(Triangle triangle) {
-        double maxY = triangle.getVertex(0).getY();
-        for (int i = 1; i <= 2; i++) {
-            if (triangle.getVertex(i).getY() > maxY) {
-                maxY = triangle.getVertex(i).getY();
+    public static double maxY(Polygon polygon) {
+        double maxY = polygon.getVertex(0).getY();
+        int verticesNumber = polygon.getNumVertices();
+        for (int i = 1; i < verticesNumber; i++) {
+            if (polygon.getVertex(i).getY() > maxY) {
+                maxY = polygon.getVertex(i).getY();
             }
         }
         return maxY;

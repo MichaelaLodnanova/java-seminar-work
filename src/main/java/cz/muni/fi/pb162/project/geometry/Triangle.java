@@ -7,8 +7,7 @@ import cz.muni.fi.pb162.project.utils.SimpleMath;
  * represented by an array of three vertices in constructor
  * @author Michaela Lodnanova
  */
-public class Triangle implements Measurable{
-    private final Vertex2D[] verticesArray = new Vertex2D[3];
+public class Triangle extends ArrayPolygon implements Measurable{
     private final Triangle[] trianglesArray = new Triangle[3];
     private static final double TOLERANCE = 0.001;
 
@@ -19,9 +18,7 @@ public class Triangle implements Measurable{
      * @param v3 is third vertex representing triangle
      */
     public Triangle(Vertex2D v1, Vertex2D v2, Vertex2D v3) {
-        verticesArray[0] = v1;
-        verticesArray[1] = v2;
-        verticesArray[2] = v3;
+        super(new Vertex2D[]{v1, v2, v3});
     }
 
     /**
@@ -39,17 +36,6 @@ public class Triangle implements Measurable{
     private boolean indexOutOfRange(int index) {
         return (index < 0 || index > 2);
     }
-    /**
-     * (due to pipeline) this method is supposed to get a vertex on a given index
-     * @param index of vertex given
-     * @return vertex on the given index
-     */
-    public Vertex2D getVertex(int index) {
-        if (indexOutOfRange(index)){
-            return null;
-        }
-        return verticesArray[index];
-    }
 
     @Override
     public double getWidth() {
@@ -63,9 +49,9 @@ public class Triangle implements Measurable{
 
     @Override
     public String toString() {
-        return "Triangle: vertices=" + verticesArray[0] +
-                " " + verticesArray[1] +
-                " " + verticesArray[2];
+        return "Triangle: vertices=" + getVertex(0) +
+                " " + getVertex(1) +
+                " " + getVertex(2);
     }
 
 
@@ -80,11 +66,11 @@ public class Triangle implements Measurable{
             return false;
         }
         for (int i = 0; i < 3; i++) {
-            Vertex2D vertex1 = new Vertex2D(verticesArray[i].getX(), verticesArray[i].getY());
-            Vertex2D vertex2 = new Vertex2D(verticesArray[i].createMiddle(verticesArray[(i + 1) % 3]).getX(),
-                    verticesArray[i].createMiddle(verticesArray[(i + 1) % 3]).getY());
-            Vertex2D vertex3 = new Vertex2D(verticesArray[i].createMiddle(verticesArray[(i + 2) % 3]).getX(),
-                    verticesArray[i].createMiddle(verticesArray[(i + 2) % 3]).getY());
+            Vertex2D vertex1 = new Vertex2D(getVertex(i).getX(), getVertex(i).getY());
+            Vertex2D vertex2 = new Vertex2D(getVertex(i).createMiddle(getVertex((i + 1) % 3)).getX(),
+                    getVertex(i).createMiddle(getVertex((i + 1) % 3)).getY());
+            Vertex2D vertex3 = new Vertex2D(getVertex(i).createMiddle(getVertex((i + 2) % 3)).getX(),
+                    getVertex(i).createMiddle(getVertex((i + 2) % 3)).getY());
             trianglesArray[i] = new Triangle(vertex1, vertex2, vertex3);
         }
         return true;
@@ -120,9 +106,9 @@ public class Triangle implements Measurable{
      * @return true when the Triangle is equilateral
      */
     public boolean isEquilateral() {
-        double dist1 = verticesArray[0].distance(verticesArray[1]);
-        double dist2 = verticesArray[1].distance(verticesArray[2]);
-        double dist3 = verticesArray[2].distance(verticesArray[0]);
+        double dist1 = getVertex(0).distance(getVertex(1));
+        double dist2 = getVertex(1).distance(getVertex(2));
+        double dist3 = getVertex(2).distance(getVertex(0));
 
         return Math.abs(dist1-dist2) < TOLERANCE
                 && Math.abs(dist2 - dist3) < TOLERANCE
