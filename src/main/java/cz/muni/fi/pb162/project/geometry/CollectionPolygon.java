@@ -52,8 +52,12 @@ public class CollectionPolygon extends SimplePolygon{
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof CollectionPolygon)) return false;
+        if (this == o){
+            return true;
+        }
+        if (!(o instanceof CollectionPolygon)){
+            return false;
+        }
         CollectionPolygon that = (CollectionPolygon) o;
         return Objects.equals(verticesList, that.verticesList);
     }

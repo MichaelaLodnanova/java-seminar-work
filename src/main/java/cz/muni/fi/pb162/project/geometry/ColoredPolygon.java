@@ -32,8 +32,12 @@ public class ColoredPolygon {
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof ColoredPolygon)) return false;
+        if (this == o){
+            return true;
+        }
+        if (!(o instanceof ColoredPolygon)){
+            return false;
+        }
         ColoredPolygon that = (ColoredPolygon) o;
         return Objects.equals(getPolygon(), that.getPolygon()) && getColor() == that.getColor();
     }
