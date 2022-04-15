@@ -1,7 +1,6 @@
 package cz.muni.fi.pb162.project.geometry;
 
 import java.util.Arrays;
-import java.util.Objects;
 
 /**
  * Class ArrayPolygon represents an object that stores coordinates
@@ -19,12 +18,7 @@ public class ArrayPolygon extends SimplePolygon {
      * @param verticesArray represents array of vertices
      */
     public ArrayPolygon(Vertex2D[] verticesArray){
-        if (verticesArray == null ||
-                verticesArray.length < 3 ||
-                Arrays.stream(verticesArray).anyMatch(Objects::isNull)){
-            throw new IllegalArgumentException("Input array is invalid");
-        }
-
+        super(verticesArray);
         this.verticesArray = Arrays.copyOf(verticesArray, verticesArray.length);
     }
 
