@@ -5,6 +5,8 @@ import cz.muni.fi.pb162.project.utils.SimpleMath;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.util.List;
+
 import static org.assertj.core.api.Assertions.assertThat;
 
 /**
@@ -15,6 +17,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 public class SimplePolygonTest {
 
     private SimplePolygon polygon;
+
     private static final Vertex2D[] VERTICES = {
             new Vertex2D(-3, -1),
             new Vertex2D(-2, -2),
@@ -51,6 +54,7 @@ public class SimplePolygonTest {
     private class MockPolygon extends SimplePolygon {
 
         private MockPolygon() {
+            super(VERTICES);
         }
 
         @Override
