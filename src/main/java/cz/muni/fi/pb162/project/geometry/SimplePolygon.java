@@ -1,5 +1,6 @@
 package cz.muni.fi.pb162.project.geometry;
 
+import cz.muni.fi.pb162.project.exception.MissingVerticesException;
 import cz.muni.fi.pb162.project.utils.SimpleMath;
 import java.util.Arrays;
 import java.util.Objects;
@@ -9,18 +10,18 @@ import java.util.Objects;
  * SimplePolygon. Implements only Override methods from Polygon interface
  * @author Michaela Lodnanova
  */
-public abstract class SimplePolygon extends SimpleMath implements Polygon{
+public abstract class SimplePolygon extends RuntimeException implements Polygon{
 
     /**
      * Constructor checks the correctness of the input field.
      * @param verticesArray stores an array of vertices.
      */
-    public SimplePolygon(Vertex2D[] verticesArray){
+    public SimplePolygon(Vertex2D[] verticesArray) throws MissingVerticesException {
         if (verticesArray == null) {
             throw new IllegalArgumentException("Input field is null");
         }
-        if (Arrays.asList(verticesArray).isEmpty()) {
-            throw new IllegalArgumentException("Input field is empty");
+        if (verticesArray.length < 3){
+            throw new MissingVerticesException("Array contains not enough vertices");
         }
         if (Arrays.stream(verticesArray).anyMatch(Objects::isNull)) {
             throw new IllegalArgumentException("Input field contains a null object");

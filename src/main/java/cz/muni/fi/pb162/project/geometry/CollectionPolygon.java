@@ -1,11 +1,13 @@
 package cz.muni.fi.pb162.project.geometry;
 
 
+import cz.muni.fi.pb162.project.exception.MissingVerticesException;
 import cz.muni.fi.pb162.project.utils.SimpleMath;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
+import java.util.stream.Collectors;
 
 
 /**
@@ -22,7 +24,7 @@ public class CollectionPolygon extends SimplePolygon{
      * vertices.
      * @param verticesList is an array of 2D vertices.
      */
-    public CollectionPolygon(Vertex2D[] verticesList){
+    public CollectionPolygon(Vertex2D[] verticesList) throws MissingVerticesException {
         super(verticesList);
         this.verticesList = new ArrayList<>(Arrays.asList(verticesList));
     }
@@ -33,7 +35,7 @@ public class CollectionPolygon extends SimplePolygon{
      * I was not able to solve without second constructor. :)
      * @param verticesList of type List filled with vertices
      */
-    public CollectionPolygon(List<Vertex2D> verticesList){
+    public CollectionPolygon(List<Vertex2D> verticesList) throws MissingVerticesException {
         this(verticesList.toArray(Vertex2D[]::new));
     }
 
@@ -70,19 +72,18 @@ public class CollectionPolygon extends SimplePolygon{
     /**
      * A method which returns a new polygon without the leftmost
      * vertices.
-     * @return null if the new polygon no longer contains any vertices
+     * @return exception if the new polygon no longer contains any vertices
      * after removing the leftmost vertices, new object of type
      * CollectionPolygon after removing leftmost vertices.
      */
-    public CollectionPolygon withoutLeftmostVertices(){
-        if (this.verticesList.isEmpty()){
-            throw new IllegalArgumentException("Input array is invalid");
+    public CollectionPolygon withoutLeftmostVertices() throws MissingVerticesException {
+        double minX = SimpleMath.minX(this);
+        List<Vertex2D> newVertices = verticesList.stream()
+                .filter(x -> (x.getX() != minX)).collect(Collectors.toList());
+        if (newVertices.isEmpty()){
+            throw new MissingVerticesException("no vertices in new array");
+        } else {
+            return new CollectionPolygon(newVertices);
         }
-        CollectionPolygon filtered = new CollectionPolygon(verticesList);
-         filtered.verticesList.removeIf(x -> (x.getX() == SimpleMath.minX(filtered)));
-         if (filtered.verticesList.size() == 0){
-             return null;
-         }
-         return filtered;
     }
 }
