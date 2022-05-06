@@ -7,7 +7,7 @@ import java.util.Objects;
  * It is represented by x and y intercepts.
  * @author Michaela Lodnanova
  */
-public final class Vertex2D {
+public final class Vertex2D implements Comparable<Vertex2D>{ // DEFINE TYPE!!!
     private final double x;
     private final double y;
 
@@ -73,5 +73,11 @@ public final class Vertex2D {
             return -1.0;
         }
         return Math.sqrt(Math.pow(vertex.getX()-x, 2.0) + Math.pow(vertex.getY()-y, 2.0));
+    }
+
+    @Override
+    public int compareTo(Vertex2D vertex2D) {
+        int compareX = Double.compare(this.getX(), vertex2D.getX());
+        return  compareX == 0 ? Double.compare(this.getY(), vertex2D.getY()) : compareX;
     }
 }

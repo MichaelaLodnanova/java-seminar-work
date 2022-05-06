@@ -10,13 +10,13 @@ import java.util.Objects;
  * SimplePolygon. Implements only Override methods from Polygon interface
  * @author Michaela Lodnanova
  */
-public abstract class SimplePolygon extends RuntimeException implements Polygon{
+public abstract class SimplePolygon implements Polygon{
 
     /**
      * Constructor checks the correctness of the input field.
      * @param verticesArray stores an array of vertices.
      */
-    public SimplePolygon(Vertex2D[] verticesArray) throws MissingVerticesException {
+    public SimplePolygon(Vertex2D[] verticesArray){
         if (verticesArray == null) {
             throw new IllegalArgumentException("Input field is null");
         }
