@@ -1,6 +1,5 @@
 package cz.muni.fi.pb162.project.geometry;
 
-
 import cz.muni.fi.pb162.project.exception.MissingVerticesException;
 import cz.muni.fi.pb162.project.utils.SimpleMath;
 import java.util.ArrayList;
@@ -24,7 +23,7 @@ public class CollectionPolygon extends SimplePolygon{
      * vertices.
      * @param verticesList is an array of 2D vertices.
      */
-    public CollectionPolygon(Vertex2D[] verticesList) throws MissingVerticesException {
+    public CollectionPolygon(Vertex2D[] verticesList) {
         super(verticesList);
         this.verticesList = new ArrayList<>(Arrays.asList(verticesList));
     }
@@ -35,7 +34,7 @@ public class CollectionPolygon extends SimplePolygon{
      * I was not able to solve without second constructor. :)
      * @param verticesList of type List filled with vertices
      */
-    public CollectionPolygon(List<Vertex2D> verticesList) throws MissingVerticesException {
+    public CollectionPolygon(List<Vertex2D> verticesList){
         this(verticesList.toArray(Vertex2D[]::new));
     }
 
@@ -76,7 +75,7 @@ public class CollectionPolygon extends SimplePolygon{
      * after removing the leftmost vertices, new object of type
      * CollectionPolygon after removing leftmost vertices.
      */
-    public CollectionPolygon withoutLeftmostVertices() throws MissingVerticesException {
+    public CollectionPolygon withoutLeftmostVertices(){
         double minX = SimpleMath.minX(this);
         List<Vertex2D> newVertices = verticesList.stream()
                 .filter(x -> (x.getX() != minX)).collect(Collectors.toList());

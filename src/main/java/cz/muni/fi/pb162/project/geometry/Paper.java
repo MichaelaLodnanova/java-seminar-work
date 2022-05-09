@@ -85,7 +85,7 @@ public class Paper extends RuntimeException
     }
 
     @Override
-    public Polygon tryToCreatePolygon(List<Vertex2D> vertices) throws MissingVerticesException {
+    public Polygon tryToCreatePolygon(List<Vertex2D> vertices){
         if (vertices == null) {
             throw new NullPointerException("input field is null");
         }
