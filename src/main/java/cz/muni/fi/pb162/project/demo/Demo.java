@@ -2,8 +2,6 @@ package cz.muni.fi.pb162.project.demo;
 
 
 import cz.muni.fi.pb162.project.geometry.LabeledPolygon;
-import cz.muni.fi.pb162.project.geometry.PolygonReadable;
-import cz.muni.fi.pb162.project.geometry.RegularOctagon;
 import cz.muni.fi.pb162.project.geometry.Vertex2D;
 
 import java.io.File;
