@@ -2,7 +2,6 @@ package cz.muni.fi.pb162.project.geometry;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
@@ -26,6 +25,7 @@ import java.util.Set;
 import java.util.TreeMap;
 import java.util.TreeSet;
 import java.util.stream.Collectors;
+
 
 /**
  * Class LabeledPolygon represents n-gon created of vertices which are sorted by
